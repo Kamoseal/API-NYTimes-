@@ -1,0 +1,19 @@
+h1{
+    text-align: center;
+}
+#submit-btn{
+    background-color: blue;
+    border: none;
+    color: white;
+}
+#search-keyword{
+    margin-left: 5%;
+    border: none;
+    height: 3%;
+    width: 60vw;
+}
+.masthead{
+    background-color: orange;
+    height: 30vh;
+    width: 80vw;
+}
