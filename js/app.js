@@ -52,13 +52,14 @@ function addNews(){
             //8:{web_url: "https://www.nytimes.com/2018/02/28/world/americas/un-sexual-assaults.html", snippet: "An expert “estimate” that United Nations personnel…ed 60,000 people turns out to be more of a guess.", blog: {…}, source: "The New York Times", multimedia: Array(66), …}
             //9:{web_url: "https://www.nytimes.com/reuters/2018/02/28/world/americas/28reuters-venezuela-politics-falcon.html", snippet: "Presidential election candidate Henri Falcon said …, to play a major role in his team if victorious.", blog: {…}, source: "Reuters", multimedia: Array(0), …}
             //length:10
-    
-    //Extraer el documento de la data
-    let article = data.response.docs;
+        let article = data.response.docs;
     //For para iterar en el arreglo dentro de article
-    article.forEach(function(article)  {
+    let template = ``
+    article.forEach(function(article){
+    
+        
 
-        //Imprime el titulo recorrido dentro del arreglo headline del objeto main
+     //Imprime el titulo recorrido dentro del arreglo headline del objeto main
         const title = article.headline.main;
         console.log(title);
         //Devuelve la descripcion del articulo
@@ -68,22 +69,42 @@ function addNews(){
         const image = article.multimedia[0];
         console.log(image);
         
-    let template = `"<li>
-                <h3></h3>
-                <p></p>
-                <img src="" alt="">
-            </li>"`     
-        
+        template +=
+            `<li>
+                <h3>${title}</h3>
+                <p>${snippet}</p>
+                <img src="${image}" alt="">
+            </li>`;   
+            responseContainer.innerHTML =  template;
+    })
+    
+            
+}     
 
-        
-        
-    })      
-
+    
+    // console.log(article);
+    
+    // let articleSearch = function (searchApi){
+    //     return searchApi.article === searchedForText
+    // }
+    // console.log(articleSearch);
+    
+    // let articleSearchFilter = article.filter(articleSearch);
+    // console.log(articleSearchFilter);
+    
     // let interpolation = `<li>${articleSearchFilter}</li>`;
 
     // console.log(interpolation);
     
-   
+    //const article = data.response.docs[0];
+    //console.log(article);
+    //Devuelve {web_url: "https://www.nytimes.com/aponline/2018/02/28/us/ap-us-parents-charged-down-syndrome.html", snippet: "A Kentucky couple has been charged with murder in …y neglect, of their adult son with Down syndrome.", blog: {…}, source: "AP", multimedia: Array(0), …}
+    //const title = article.headline.main;
+    //console.log(title);
+    //Devuelve Parents Charged in Death of Adult Son With Down Syndrome
+    //const snippet = article.snippet;
+    //console.log(snippet);
+    //Devuelve A Kentucky couple has been charged with murder in the death, by neglect, of their adult son with Down syndrome.
     
     //Creamos un li, le añadimos una clase para que tenga estilos, le agregamos texto que obtuvimos del JSON y lo anexamos al ul
     //let li = document.createElement('li');
@@ -91,4 +112,4 @@ function addNews(){
     //li.innerText = snippet;
     
     //responseContainer.appendChild(li);
-}
+
